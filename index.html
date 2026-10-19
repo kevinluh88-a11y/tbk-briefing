@@ -1,0 +1,636 @@
+<title>TBK 礦機說帖</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<style>
+/* 版面：單欄文件；主軸是反覆出現的「簡報說 / 實際查到」對照，朱紅只用在查證過的事實上 */
+:root{
+  --paper:#F1F4F7;
+  --surface:#FFFFFF;
+  --surface-2:#E8EDF2;
+  --ink:#131B24;
+  --ink-soft:#56646F;
+  --ink-faint:#8795A1;
+  --rule:#D3DBE2;
+  --rule-strong:#B6C2CC;
+  --red:#C0362C;
+  --red-deep:#94241C;
+  --red-wash:#FBEDEB;
+  --amber:#8A6414;
+  --amber-wash:#F9F1DC;
+  --claim:#64737F;
+  --font-display:"Noto Serif TC",Songti TC,SimSun,serif;
+  --font-body:"Noto Sans TC",-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
+  --col:720px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F141A;
+    --surface:#161E26;
+    --surface-2:#1E2831;
+    --ink:#E4EAF0;
+    --ink-soft:#9BA9B6;
+    --ink-faint:#71808D;
+    --rule:#293540;
+    --rule-strong:#3A4854;
+    --red:#FF7266;
+    --red-deep:#FF9389;
+    --red-wash:#2B1917;
+    --amber:#D8A94B;
+    --amber-wash:#272013;
+    --claim:#8694A0;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F141A;
+  --surface:#161E26;
+  --surface-2:#1E2831;
+  --ink:#E4EAF0;
+  --ink-soft:#9BA9B6;
+  --ink-faint:#71808D;
+  --rule:#293540;
+  --rule-strong:#3A4854;
+  --red:#FF7266;
+  --red-deep:#FF9389;
+  --red-wash:#2B1917;
+  --amber:#D8A94B;
+  --amber-wash:#272013;
+  --claim:#8694A0;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{
+  max-width:var(--col);
+  margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0 72px;
+}
+p{margin:0 0 1em}
+p:last-child{margin-bottom:0}
+strong{font-weight:700}
+.num{font-variant-numeric:tabular-nums}
+
+/* ── 頁首 ── */
+.masthead{padding-block:52px 34px;border-bottom:3px double var(--rule-strong)}
+.eyebrow{
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-faint);margin:0 0 18px;font-weight:500;
+}
+h1{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(30px,7vw,44px);line-height:1.3;
+  letter-spacing:.01em;margin:0 0 14px;text-wrap:balance;
+}
+.dek{font-size:17px;color:var(--ink-soft);margin:0;line-height:1.75}
+
+/* ── 一句話結論 ── */
+.verdict{
+  margin-block:38px;padding:26px 24px;
+  background:var(--surface);border:1px solid var(--rule);
+  border-left:5px solid var(--red);
+}
+.verdict .label{
+  font-family:var(--font-display);font-weight:600;font-size:14px;
+  color:var(--red);letter-spacing:.1em;margin:0 0 12px;
+}
+.verdict p{font-size:19px;line-height:1.75;font-weight:500;margin:0}
+
+/* ── 白話重點 ── */
+.plain{margin-block:40px}
+.plain ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px}
+.plain li{display:flex;gap:16px;align-items:flex-start;min-width:0}
+.plain .n{
+  flex:0 0 30px;height:30px;border-radius:50%;
+  background:var(--ink);color:var(--paper);
+  font-family:var(--font-display);font-weight:600;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+  margin-top:3px;font-variant-numeric:tabular-nums;
+}
+.plain li.hot .n{background:var(--red);color:#fff}
+.plain .t{min-width:0;font-size:16.5px;line-height:1.8}
+
+/* ── 章節 ── */
+section{margin-block:56px;scroll-margin-top:20px}
+.sec-head{display:flex;gap:14px;align-items:baseline;margin:0 0 20px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+.sec-num{
+  font-family:var(--font-display);font-weight:700;font-size:15px;
+  color:var(--red);letter-spacing:.06em;flex:0 0 auto;
+  font-variant-numeric:tabular-nums;
+}
+h2{
+  font-family:var(--font-display);font-weight:600;
+  font-size:clamp(21px,4.6vw,26px);line-height:1.4;
+  margin:0;text-wrap:balance;min-width:0;
+}
+h3{
+  font-family:var(--font-display);font-weight:600;font-size:17px;
+  margin:30px 0 10px;line-height:1.6;
+}
+
+/* ── 對照：簡報說 / 實際上 ── */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-block:22px}
+.vs>div{background:var(--surface);padding:18px 18px 20px;min-width:0}
+.vs .tag{
+  font-size:11.5px;letter-spacing:.14em;font-weight:700;
+  margin:0 0 10px;text-transform:uppercase;
+}
+.vs .said .tag{color:var(--claim)}
+.vs .real .tag{color:var(--red)}
+.vs .said{color:var(--ink-soft)}
+.vs .real{background:var(--red-wash)}
+.vs p{font-size:15px;line-height:1.75;margin:0 0 .7em}
+.vs p:last-child{margin-bottom:0}
+@media (max-width:560px){.vs{grid-template-columns:1fr}}
+
+/* ── 數字磚 ── */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-block:24px}
+.tile{background:var(--surface);padding:20px 16px;min-width:0}
+.tile .v{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(26px,6vw,32px);line-height:1.15;
+  color:var(--red);font-variant-numeric:tabular-nums;display:block;
+}
+.tile .k{font-size:13px;color:var(--ink-soft);line-height:1.6;margin-top:8px;display:block}
+
+/* ── 收支條 ── */
+.flow{background:var(--surface);border:1px solid var(--rule);padding:24px 20px;margin-block:26px}
+.bar-row{display:flex;align-items:center;gap:14px;margin-bottom:14px;min-width:0}
+.bar-row .lab{flex:0 0 96px;font-size:13.5px;color:var(--ink-soft);line-height:1.5}
+.bar-track{flex:1;min-width:0;height:30px;background:var(--surface-2);position:relative}
+.bar-fill{height:100%;display:flex;align-items:center;padding-left:10px;color:#fff;font-size:13.5px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar-in .bar-fill{background:var(--claim)}
+.bar-out .bar-fill{background:var(--red-deep)}
+:root[data-theme="dark"] .bar-out .bar-fill,
+:root[data-theme="dark"] .bar-in .bar-fill{color:#10151A}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .bar-out .bar-fill,
+  :root:not([data-theme="light"]) .bar-in .bar-fill{color:#10151A}
+}
+.gap-note{
+  margin-top:18px;padding-top:16px;border-top:1px dashed var(--rule-strong);
+  font-size:15.5px;line-height:1.8;
+}
+.gap-note b{color:var(--red);font-size:17px}
+@media (max-width:460px){.bar-row{flex-direction:column;align-items:stretch;gap:5px}.bar-row .lab{flex:none}}
+
+/* ── 表 ── */
+.scroller{overflow-x:auto;margin-block:22px;border:1px solid var(--rule)}
+table{border-collapse:collapse;width:100%;background:var(--surface);font-size:14.5px}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.65}
+th{background:var(--surface-2);font-weight:700;font-size:13px;letter-spacing:.04em;white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tr.peak td{color:var(--red);font-weight:700}
+
+/* ── 價格對照 ── */
+.price{background:var(--surface);border:1px solid var(--rule);padding:24px 20px;margin-block:26px}
+.price-row{margin-bottom:20px}
+.price-row:last-of-type{margin-bottom:0}
+.price-lab{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;color:var(--ink-soft);margin-bottom:7px;flex-wrap:wrap}
+.price-lab b{font-family:var(--font-display);font-size:17px;color:var(--ink);font-variant-numeric:tabular-nums}
+.price-bar{height:16px;background:var(--surface-2)}
+.price-bar i{display:block;height:100%}
+.price-bar.hi i{width:100%;background:var(--claim)}
+.price-bar.lo i{width:5.7%;background:var(--red)}
+
+/* ── 矛盾清單 ── */
+.clash{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);margin-block:22px}
+.clash>li{list-style:none;background:var(--surface);padding:18px 18px;border-bottom:1px solid var(--rule);min-width:0}
+.clash>li:last-child{border-bottom:none}
+.clash h4{
+  font-family:var(--font-display);font-weight:600;font-size:16px;
+  margin:0 0 9px;line-height:1.6;
+}
+.clash p{font-size:14.5px;line-height:1.75;margin:0 0 .55em;color:var(--ink-soft)}
+.clash p:last-child{margin-bottom:0}
+.pg{
+  display:inline-block;background:var(--surface-2);color:var(--ink-soft);
+  font-size:11.5px;font-weight:700;padding:1px 7px;margin-right:7px;
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.clash .so{color:var(--red);font-weight:500}
+
+/* ── 法律警示 ── */
+.alarm{
+  background:var(--amber-wash);border:1px solid var(--amber);
+  border-left:5px solid var(--amber);padding:22px 20px;margin-block:26px;
+}
+.alarm .label{
+  font-family:var(--font-display);font-weight:600;font-size:14px;
+  color:var(--amber);letter-spacing:.08em;margin:0 0 11px;
+}
+.alarm p{font-size:17px;font-weight:500;line-height:1.75;margin:0}
+
+/* ── 提問 ── */
+.ask{display:flex;flex-direction:column;gap:16px;margin-block:24px;padding:0;list-style:none}
+.ask li{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--red);padding:17px 18px;min-width:0}
+.ask .q{font-size:16px;line-height:1.8;margin:0 0 9px;font-weight:500}
+.ask .why{font-size:14px;color:var(--ink-soft);margin:0;line-height:1.7}
+
+/* ── 可自行查證 ── */
+.check{background:var(--surface);border:1px dashed var(--rule-strong);padding:20px 18px;margin-block:20px}
+.check h4{font-family:var(--font-display);font-weight:600;font-size:16px;margin:0 0 9px}
+.check p{font-size:15px;line-height:1.8;margin:0 0 .6em;color:var(--ink-soft)}
+.check p:last-child{margin-bottom:0}
+code{
+  font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  font-size:12.5px;background:var(--surface-2);color:var(--ink);
+  padding:3px 6px;word-break:break-all;
+}
+
+/* ── 行動 ── */
+.todo{list-style:none;padding:0;margin:24px 0 0;display:flex;flex-direction:column;gap:14px;counter-reset:t}
+.todo li{
+  display:flex;gap:14px;align-items:flex-start;min-width:0;
+  background:var(--surface);border:1px solid var(--rule);padding:16px 18px;
+}
+.todo li::before{
+  counter-increment:t;content:counter(t);
+  flex:0 0 26px;height:26px;background:var(--red);color:#fff;
+  font-family:var(--font-display);font-weight:600;font-size:13px;
+  display:flex;align-items:center;justify-content:center;margin-top:3px;
+  font-variant-numeric:tabular-nums;
+}
+.todo .tx{min-width:0;font-size:15.5px;line-height:1.75}
+.todo .tx b{display:block;margin-bottom:3px;font-size:16px}
+.todo .tx span{color:var(--ink-soft);font-size:14.5px}
+
+/* ── 頁尾 ── */
+footer{margin-top:60px;padding-top:26px;border-top:3px double var(--rule-strong);font-size:13px;color:var(--ink-faint);line-height:1.8}
+footer h4{font-family:var(--font-display);font-size:14px;color:var(--ink-soft);margin:0 0 10px;font-weight:600}
+footer ul{margin:0 0 20px;padding-left:1.1em;display:flex;flex-direction:column;gap:5px}
+footer a{color:var(--ink-soft);text-decoration:underline;text-underline-offset:2px}
+footer a:hover{color:var(--red)}
+a:focus-visible,li:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">給朋友的提醒　·　2026 年 10 月 19 日</p>
+  <h1>這台「礦機」在賣什麼</h1>
+  <p class="dek">一份用白話寫的說明。關於那份 TronBank（代幣叫 TBK）礦機簡報，裡面哪些話對不上，以及錢實際上是從哪裡來的。<br>不需要懂虛擬貨幣，也看得完。</p>
+</header>
+
+<div class="verdict">
+  <p class="label">一句話結論</p>
+  <p>這不是一門生意，是一場接力。你領到的錢，來自下一個加入的人。當沒有下一個人，它就停了——而它現在已經在停了。</p>
+</div>
+
+<div class="plain">
+  <ol>
+    <li>
+      <span class="n">1</span>
+      <span class="t">你花大約 <b class="num">610 美元</b>（約台幣 2 萬）買一台「礦機」。對方說，一年後會變成 <b class="num">1,254 美元</b>（約台幣 3.9 萬）。</span>
+    </li>
+    <li>
+      <span class="n">2</span>
+      <span class="t">可是這台機器沒有在賺錢。它每個月只跟你收 <b class="num">40 美元</b>，卻說要付給你 <b class="num">114 美元</b>。</span>
+    </li>
+    <li class="hot">
+      <span class="n">3</span>
+      <span class="t">中間差的 <b class="num">74 美元</b>，平台沒有任何生意可以賺出來。<strong>只能從下一個加入的人口袋裡拿。</strong></span>
+    </li>
+    <li class="hot">
+      <span class="n">4</span>
+      <span class="t">要讓大家都領得到，加入的人數必須<strong>每個月增加 57%，而且永遠不能停</strong>。一年後要變成現在的 223 倍。世界上沒有這麼多人。</span>
+    </li>
+    <li class="hot">
+      <span class="n">5</span>
+      <span class="t">就算帳面上看得到數字，也賣不掉。全世界所有交易平台加起來，只要有人賣掉大約 <b class="num">4,240 美元</b>（約台幣 13 萬），價格就會再掉 2%。</span>
+    </li>
+    <li class="hot">
+      <span class="n">6</span>
+      <span class="t">而且它已經在垮了。這個幣今年 1 月 4 日最高 <b class="num">2.99 美元</b>，現在只剩 <b class="num">0.17 美元</b>，<strong>跌掉 94%</strong>。</span>
+    </li>
+  </ol>
+</div>
+
+<p style="font-size:16.5px;border-left:3px solid var(--rule-strong);padding-left:16px;color:var(--ink-soft)">那份 27 頁的簡報，從頭到尾沒有提第 6 點。</p>
+
+<p style="font-size:13px;color:var(--ink-faint)">（文中美元換算台幣以 1 美元約 31 元計，僅供感受金額大小。）</p>
+
+<!-- 1 -->
+<section>
+  <div class="sec-head"><span class="sec-num">壹</span><h2>這台機器的錢，從哪裡來？</h2></div>
+
+  <p>任何投資，第一個要問的問題都一樣：<strong>我賺的錢，是誰付的？</strong></p>
+  <p>把簡報第 2、3 頁的數字抄下來就好，不用自己算：</p>
+
+  <div class="flow">
+    <div class="bar-row bar-in">
+      <span class="lab">它每月跟你收</span>
+      <span class="bar-track"><span class="bar-fill" style="width:35%">40 美元（管理費）</span></span>
+    </div>
+    <div class="bar-row bar-out">
+      <span class="lab">它每月說要付你</span>
+      <span class="bar-track"><span class="bar-fill" style="width:100%">114 美元</span></span>
+    </div>
+    <p class="gap-note">也就是說，<strong>每一台已經在跑的機器，每個月讓這個系統少掉 <b>74 美元</b></strong>。機器越多，洞越大。</p>
+  </div>
+
+  <p>那這 74 美元從哪裡補？只有一個來源：<strong>新加入的人</strong>。每一台新機器進場，一次帶進 130 美元（機器 120＋加速器 10）。</p>
+
+  <h3>算一下要多少新人才補得起來</h3>
+  <p>每 130 美元的新錢，只能補 1.76 台舊機器的每月缺口。換句話說：</p>
+
+  <div class="tiles">
+    <div class="tile"><span class="v">57%</span><span class="k">機器總數每個月必須增加的比例，才付得出承諾的錢</span></div>
+    <div class="tile"><span class="v">223 倍</span><span class="k">換算成一年要成長的倍數</span></div>
+  </div>
+
+  <p>這個要求是會複利的。假設現在有 1 萬台：</p>
+
+  <div class="scroller"><table>
+    <thead><tr><th>時間</th><th>必須達到的機器數</th></tr></thead>
+    <tbody>
+      <tr><td>現在</td><td class="n">10,000 台</td></tr>
+      <tr><td>3 個月後</td><td class="n">38,600 台</td></tr>
+      <tr><td>6 個月後</td><td class="n">149,000 台</td></tr>
+      <tr><td>12 個月後</td><td class="n">223 萬台</td></tr>
+      <tr class="peak"><td>24 個月後</td><td class="n">4 億 9,600 萬台</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>全世界只有 80 億人。這條曲線撐不到第三年，而且<strong>它不是「可能會失敗」，是算術上注定付不出來</strong>。只要新加入的速度掉到每月 57% 以下，當月就開始缺錢。</p>
+
+  <h3>它自己其實寫出來了</h3>
+  <div class="vs">
+    <div class="said"><p class="tag">簡報第 23 頁</p><p>「市場越大，管理費資金池越厚，TBK 底層價值支撐越強。」</p></div>
+    <div class="real"><p class="tag">這句話的意思是</p><p>幣的價值靠的是<strong>後面的人繳的管理費</strong>，不是靠做生意賺來的錢。</p><p>真正有客戶的公司不會這樣寫。它會說「客戶越多，服務收入越高」。</p></div>
+  </div>
+
+  <h3>它真正的生意，報酬率是多少？</h3>
+  <div class="vs">
+    <div class="said"><p class="tag">簡報第 15 頁（它自己寫的）</p><p>節點投票的年報酬率<strong>約 3.04%</strong>。</p><p>這是這家公司唯一能被外界驗證的真實收入來源。</p></div>
+    <div class="real"><p class="tag">但它承諾給你的是</p><p>一年 <strong>105%</strong>（第 2、3 頁），甚至一個月 <strong>275%</strong>（第 22 頁）。</p><p>一門年報酬 3% 的生意，拿什麼付 105%？中間差了超過 30 倍的錢，只能來自新人的本金。</p></div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section>
+  <div class="sec-head"><span class="sec-num">貳</span><h2>就算帳上有數字，也賣不掉</h2></div>
+
+  <p>簡報一直強調「秒到秒領」「隨時變現」。這裡要講一個很多人沒概念的事：<strong>帳面上有一個數字，跟你真的能把它換成現金，是兩件事。</strong></p>
+  <p>用菜市場來比喻：你手上有一籃菜，標價一百塊。但如果整個市場今天只有兩個客人、身上總共只帶了四十塊，你這籃菜就賣不到一百塊。你一降價，價格就崩了。</p>
+  <p>這個幣現在的市場，就是這樣：</p>
+
+  <div class="tiles">
+    <div class="tile"><span class="v">10.8 萬</span><span class="k">全世界一整天的總成交金額（美元）</span></div>
+    <div class="tile"><span class="v">4,240</span><span class="k">現在掛著等著買的單，總共只有這麼多（美元）</span></div>
+    <div class="tile"><span class="v">37 台</span><span class="k">只要這麼多台機器同時賣掉一個月的收益，價格就跌 2%</span></div>
+  </div>
+
+  <p>一台機器一個月說要產出 114 美元。<strong>37 台乘以 114，就等於全世界所有買單的總和。</strong></p>
+  <p>而簡報第 25 頁那張分潤表，級距一路列到 <strong>10 萬台</strong>。10 萬台一個月的產出是 1,140 萬美元，要賣進一個整個月只成交 324 萬美元的市場——<strong>等於全市場 3.5 倍的賣壓，而且沒有買方</strong>。</p>
+
+  <div class="vs">
+    <div class="said"><p class="tag">簡報第 4 頁</p><p>「已經落地！成功上架 <strong>12 家</strong>加密貨幣交易所」</p><p>「隨時變現！交易深度支撐直接換 USDT」</p></div>
+    <div class="real"><p class="tag">公開資料查到的</p><p>真正有在交易的只有 <strong>3 家</strong>：Gate、MEXC，以及一家 Hotcoin——Hotcoin 一天的成交金額只有 1,300 美元。</p><p>另一個查價網站（CoinGecko）甚至只列出 2 家。</p></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section>
+  <div class="sec-head"><span class="sec-num">參</span><h2>這個幣已經跌掉 94%</h2></div>
+
+  <p>這是整件事裡最不需要解釋的部分。價格是公開的，任何人都查得到。</p>
+
+  <div class="price">
+    <div class="price-row">
+      <div class="price-lab"><span>2026 年 1 月 4 日（最高點）</span><b>$2.99</b></div>
+      <div class="price-bar hi"><i></i></div>
+    </div>
+    <div class="price-row">
+      <div class="price-lab"><span>2026 年 10 月 19 日（今天）</span><b>$0.17</b></div>
+      <div class="price-bar lo"><i></i></div>
+    </div>
+  </div>
+
+  <p>而且它 10 月 14 日、10 月 18 日<strong>連續創下歷史新低</strong>，到現在都還在往下。</p>
+
+  <div class="vs">
+    <div class="said"><p class="tag">簡報第 27 頁的計畫表</p><p>2025 下半年：「TBK 市場價格<strong>預計翻倍</strong>」</p><p>2026 年：「TBK 市值突破 <strong>60 億美元</strong>」「年收入突破 <strong>6 億美元</strong>」</p></div>
+    <div class="real"><p class="tag">實際上</p><p>現在的總市值大約 1,300 萬到 3,400 萬美元，<strong>不到它自己訂的目標的 0.6%</strong>，而且還在跌。</p><p>一家號稱年收入要做到 6 億美元的公司，它的幣一天只成交 10 萬美元。</p></div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section>
+  <div class="sec-head"><span class="sec-num">肆</span><h2>97% 的幣在發行的人自己手上</h2></div>
+
+  <p>虛擬貨幣有一個好處：<strong>誰持有多少，是公開的，任何人都能查。</strong>我查了這個幣的公開紀錄：</p>
+
+  <div class="scroller"><table>
+    <thead><tr><th>帳戶（上面標的名稱）</th><th>佔全部的比例</th></tr></thead>
+    <tbody>
+      <tr><td>礦池（Mining）</td><td class="n">27.2%</td></tr>
+      <tr><td>未標示</td><td class="n">15.6%</td></tr>
+      <tr><td>未標示</td><td class="n">15.0%</td></tr>
+      <tr><td>項目方（Project）</td><td class="n">14.6%</td></tr>
+      <tr><td>未標示</td><td class="n">9.3%</td></tr>
+      <tr><td>投資方（Investment）</td><td class="n">9.2%</td></tr>
+      <tr><td>節點（Node）</td><td class="n">3.4%</td></tr>
+      <tr class="peak"><td>以上 7 個帳戶合計</td><td class="n">94.1%</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>再加上已經銷毀的 2.9%，<strong>前 10 個帳戶就佔了 98%</strong>。</p>
+  <p>更值得注意的是另一個數字：</p>
+
+  <div class="tiles">
+    <div class="tile"><span class="v">1,885</span><span class="k">全世界持有這個幣的帳戶總數</span></div>
+    <div class="tile"><span class="v">不到 2%</span><span class="k">所有散戶加起來持有的比例</span></div>
+  </div>
+
+  <p>白話講：<strong>發行的人自己握著 97%，隨時可以倒出來賣；而所有買家加起來不到 2%。</strong>這不是一個市場，這是一個人拿著水龍頭，對著一個水杯。</p>
+  <p>順帶一提，簡報第 27 頁寫未來「用戶覆蓋全球 100 個國家」。目前全世界的持有帳戶是 1,885 個。</p>
+</section>
+
+<!-- 5 -->
+<section>
+  <div class="sec-head"><span class="sec-num">伍</span><h2>簡報自己前後矛盾的地方</h2></div>
+
+  <p>這一節最重要，因為<strong>你不需要相信我，也不需要相信任何外部資料</strong>。把那份簡報前後翻一遍就看得到。</p>
+
+  <ul class="clash">
+    <li>
+      <h4>一、報酬率講了三個版本，差超過 30 倍</h4>
+      <p><span class="pg">第 2、3 頁</span>投入 610 美元，一年拿回 1,254 美元 →「<strong>一年</strong>賺 105%」</p>
+      <p><span class="pg">第 19 頁</span>「靜態理財<strong>月</strong>收益率 100–200%」→ 變成「<strong>一個月</strong>賺 100–200%」</p>
+      <p><span class="pg">第 22 頁</span>「月化約 275%」、推廣者「月化收益率可達 1000%」</p>
+      <p class="so">真的在做生意的人，不會連自己賺多少都算不出來。這三個數字不可能同時成立。</p>
+    </li>
+    <li>
+      <h4>二、那個 275%，是把成本偷偷拿掉算出來的</h4>
+      <p><span class="pg">第 22 頁</span>它的算法是：每月管理費 40，賣得到 110，所以 110 ÷ 40 ＝ 275%。</p>
+      <p class="so">它把 130 美元的機器成本<strong>整個從分母拿掉了</strong>。而且 110 減 40 等於 70，簡報卻寫「淨賺 80」。</p>
+    </li>
+    <li>
+      <h4>三、第一頁的加法就加錯</h4>
+      <p><span class="pg">第 2、3 頁</span>寫「礦機 120＋加速器 10＋每月管理費 40 × 11 個月」，這樣是 570，可是它寫「一年總投入：約 610」。</p>
+      <p class="so">一份要跟你收錢的文件，開頭的加總就對不起來。</p>
+    </li>
+    <li>
+      <h4>四、一邊說不保證，一邊說沒有風險</h4>
+      <p><span class="pg">第 2 頁</span>「本團隊不對代幣市場價值或流動性做任何保本或收益承諾。」</p>
+      <p><span class="pg">第 19 頁</span>「很安全：<strong>沒有跑路、幣價崩盤等風險</strong>。」</p>
+      <p class="so">同一份文件裡的兩句話，完全相反。而且第二句已經被事實推翻了——它跌了 94%。</p>
+    </li>
+    <li>
+      <h4>五、它說產出會被稀釋，卻用固定數字算一年</h4>
+      <p><span class="pg">第 21 頁</span>「每天固定總量的礦幣」「<strong>礦機越多，產出越少</strong>」——意思是大家分同一塊餅，人越多每個人分到越少。</p>
+      <p><span class="pg">第 2、3 頁</span>卻用「每個月固定 114 美元」乘以 11 個月，算出 1,254。</p>
+      <p class="so">那個 114 是幾台機器的時候算出來的？現在有幾台？簡報沒寫。這是刻意的。</p>
+    </li>
+    <li>
+      <h4>六、「三方共管」其實是四方五把鑰匙，全是自己人</h4>
+      <p><span class="pg">第 24 頁</span>標題寫「採用三方共管（多簽）錢包」，底下列的是：官方 1 把、運營方 1 把、市場方 2 把、投資方 1 把。</p>
+      <p class="so">是四方五把，不是三方。而且<strong>五把鑰匙全部是關係人</strong>，沒有任何用戶代表或獨立第三方。要幾把鑰匙才動得了錢沒寫，帳戶編號也沒公布，外面根本查不到。</p>
+    </li>
+    <li>
+      <h4>七、一邊寫「無任何模式」，底下就是一張分潤表</h4>
+      <p><span class="pg">第 25 頁</span>標題是「手續費極差方式，<strong>無任何模式</strong>」。</p>
+      <p class="so">可是標題底下那張表，就是依照「你底下有多少台機器」分成 7 個級距、給你抽成的分潤表——從 50 台抽 0.4%，一路到 10 萬台抽 2%。這就是靠發展下線領錢。否認得這麼刻意，本身就是警訊。</p>
+    </li>
+  </ul>
+</section>
+
+<!-- 6 -->
+<section>
+  <div class="sec-head"><span class="sec-num">陸</span><h2>它拿出來的「證明」是什麼</h2></div>
+
+  <h3>「募到 1,000 萬美元」</h3>
+  <div class="vs">
+    <div class="said"><p class="tag">簡報第 6、10、16 頁</p><p>「TRONBANK 完成戰略融資，由 BlockX 領投 1,000 萬美元」，並附上 The Block 等媒體的畫面。</p></div>
+    <div class="real"><p class="tag">查到的真相</p><p>那是 <strong>TronBank 自己發的新聞稿</strong>，2025 年 11 月 19 日透過付費新聞稿通路散發。</p><p>The Block 把它放在「<strong>新聞稿</strong>」專區，而且特別註明：「由 TRONBANK 提供」「本站不必然背書其內容」「新聞稿非本編輯團隊撰寫」。</p><p>不同轉載版本的投資人名單還互相對不上。</p></div>
+  </div>
+  <p>白話：<strong>那是花錢買的版面，不是記者查證過的報導。</strong>任何人付錢都能發一篇。</p>
+
+  <h3>「超級節點合夥人，排名第 51」</h3>
+  <p>簡報<span class="pg">第 14 頁</span>自己在同一頁寫了：前 27 名才叫「超級代表」，<strong>第 28 到 127 名只是「合夥人」</strong>。</p>
+  <p>排名第 51 的意思，就是<strong>它沒有選上</strong>。而且這個名次是靠自己投自己換來的，不是任何機構審查過的資格。</p>
+
+  <h3>「合作夥伴」那一頁</h3>
+  <p><span class="pg">第 26 頁</span>列了一整排知名公司的招牌。但其中大部分（各種錢包）是<strong>支援這一類所有的幣</strong>——任何人發一個同類型的幣，都會自動「被支援」。把這個叫合作夥伴，是誤導。</p>
+
+  <h3>它用來佐證的資料長什麼樣</h3>
+  <div class="scroller"><table>
+    <thead><tr><th>頁數</th><th>那一頁實際上是什麼</th></tr></thead>
+    <tbody>
+      <tr><td class="n">第 6、10 頁</td><td>Google 的 AI 聊天機器人的<strong>對話截圖</strong></td></tr>
+      <tr><td class="n">第 9 頁</td><td>抖音上一個<strong>戴面具的人</strong>講話的畫面</td></tr>
+      <tr><td class="n">第 11 頁</td><td>一支短影片，標題是「TRON 可能在 <strong>2018 年</strong>爆紅的三個理由」</td></tr>
+    </tbody>
+  </table></div>
+  <p>一家號稱明年年收入要做到 6 億美元的公司，拿 AI 聊天截圖和抖音短片當作證據。</p>
+</section>
+
+<!-- 7 -->
+<section>
+  <div class="sec-head"><span class="sec-num">柒</span><h2>在台灣，這可能不只是賠錢</h2></div>
+
+  <div class="alarm">
+    <p class="label">最重要的一件事</p>
+    <p>如果你已經介紹別人加入，在這類案件裡，<strong>檢方通常不會把你當成被害人，而是當成共同被告。</strong></p>
+  </div>
+
+  <p>很多人以為最壞的結果就是「錢賠光」。不是。這類案子在台灣通常會碰到三條罪：</p>
+
+  <h3>一、違法吸金（銀行法）</h3>
+  <p>最高法院已經明確認定：<strong>有經濟價值的虛擬貨幣，算銀行法裡講的「款項」</strong>。只要向不特定人收錢，並承諾「與本金顯不相當」的報酬，就構成違法吸金。</p>
+  <p>年報酬 105%——更不用說月報酬 275%——絕對落在「顯不相當」裡面。<br>刑度：<strong>3 年以上 10 年以下</strong>；如果犯罪所得達 1 億元以上，<strong>7 年以上</strong>。</p>
+
+  <h3>二、變質多層次傳銷（多層次傳銷管理法）</h3>
+  <p>法律要求：傳銷商的收入必須<strong>主要來自推廣銷售商品，而不是來自介紹別人加入</strong>。</p>
+  <p>但簡報第 22 頁寫得很直白——「動態推廣者」的模式是：把成本 130 美元的機器，用 400 到 500 美元賣給新人，再加上下線的分層抽成，「月化收益率可達 1000%」。<strong>這就是靠拉人賺錢。</strong></p>
+
+  <h3>三、詐欺（刑法）</h3>
+  <p>如果是三人以上共同犯，構成<strong>加重詐欺</strong>，刑度更重。</p>
+
+  <p style="margin-top:26px;font-size:17px;border-left:4px solid var(--red);padding-left:16px">所以結論是：賠錢反而是比較小的問題。<strong>有沒有拉過人，決定了你是受害者還是被告。</strong></p>
+</section>
+
+<!-- 8 -->
+<section>
+  <div class="sec-head"><span class="sec-num">捌</span><h2>三個問題，可以直接拿去問</h2></div>
+
+  <p>不用吵，也不用說服誰。這三題全部出自那份簡報本身，問下去對方答不出來：</p>
+
+  <ol class="ask">
+    <li>
+      <p class="q">「簡報第 15 頁說，你們真正的業務一年報酬率是 3.04%。第 19 頁說投資人一個月賺 100 到 200%。中間差了超過 400 倍的錢，是從哪個客人身上賺來的？」</p>
+      <p class="why">這題在問：錢的來源。答不出「客人是誰」，就代表錢來自後面的人。</p>
+    </li>
+    <li>
+      <p class="q">「第 21 頁說機器越多、每台分到越少。那第 3 頁那個『每個月 114 美元』，是在幾台機器的時候算出來的？現在總共有幾台？」</p>
+      <p class="why">這題在問：那個報酬數字還成不成立。對方通常不會告訴你目前的總機器數——因為一講出來，報酬就得往下修。</p>
+    </li>
+    <li>
+      <p class="q">「現在全世界一天只成交 10.8 萬美元，賣掉 4,240 美元價格就跌 2%。如果有 1,000 個人同時想把錢拿出來，誰來接？」</p>
+      <p class="why">這題在問：出得了場嗎。這是整件事最後會卡住的地方。</p>
+    </li>
+  </ol>
+</section>
+
+<!-- 9 -->
+<section>
+  <div class="sec-head"><span class="sec-num">玖</span><h2>兩件可以自己查，不用相信我</h2></div>
+
+  <div class="check">
+    <h4>一、看一眼這個幣的走勢圖</h4>
+    <p>打開任何一個查幣價的網站（CoinMarketCap、Gate 都可以），搜尋「<strong>TBK</strong>」或「<strong>TronBank</strong>」，把時間拉到「一年」。</p>
+    <p>你會看到：今年 1 月 4 日最高 2.99 美元，現在 0.17 美元。</p>
+    <p>然後翻開簡報第 27 頁，上面寫著「TBK 市場價格<strong>預計翻倍</strong>」。兩張圖放在一起看就夠了。</p>
+  </div>
+
+  <div class="check">
+    <h4>二、看一眼誰持有這個幣</h4>
+    <p>打開 <strong>Tronscan</strong> 這個查詢網站，在搜尋框貼上這一串代號：</p>
+    <p><code>TR84L8oj3zt6NEZknUPerxZJyAALE8XNSH</code></p>
+    <p>然後點「Holders（持有人）」。你會看到全世界只有 <strong>1,885 個</strong>帳戶持有，而且前面幾個帳戶就拿走 94%。</p>
+  </div>
+</section>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head"><span class="sec-num">拾</span><h2>如果已經投了，現在做這四件事</h2></div>
+
+  <p>重點不是回本，是<strong>停損</strong>和<strong>避免變成被告</strong>。</p>
+
+  <ol class="todo">
+    <li><span class="tx"><b>停止再投入，也停止繳管理費。</b><span>已經投進去的錢拿不回來，不是繼續投的理由。再投只會擴大損失。</span></span></li>
+    <li><span class="tx"><b>立刻停止介紹任何人。</b><span>這一條最重要。它決定你最後站在哪一邊——這不只是道義問題，是刑責問題。</span></span></li>
+    <li><span class="tx"><b>把所有紀錄保存下來。</b><span>轉帳紀錄、群組對話、這份簡報、介紹你進去的人是誰、你介紹過哪些人。現在就備份，不要等。</span></span></li>
+    <li><span class="tx"><b>金額大，或已經拉過人，儘快找律師談。</b><span>早一點釐清自己的位置，處理空間差很多。</span></span></li>
+  </ol>
+</section>
+
+<footer>
+  <h4>資料來源</h4>
+  <ul>
+    <li>幣價、市值、成交量：<a href="https://coinmarketcap.com/currencies/tronbank/">CoinMarketCap</a>、<a href="https://www.coingecko.com/en/coins/tronbank">CoinGecko</a></li>
+    <li>交易所與掛單深度：<a href="https://coincodex.com/crypto/tronbank-1/exchanges/">CoinCodex</a></li>
+    <li>連續創新低紀錄：<a href="https://www.tokenpost.com/news/investing/34347">TokenPost</a></li>
+    <li>持有人分布：Tronscan 公開查詢（合約 TR84L8oj3zt6NEZknUPerxZJyAALE8XNSH）</li>
+    <li>融資新聞稿原文與聲明：<a href="https://www.theblock.co/press-releases/379491/tronbank-secures-multi-institutional-strategic-investments-led-by-blockx-with-a-10m-investment">The Block（新聞稿專區）</a></li>
+    <li>虛擬貨幣適用銀行法：最高法院 112 年度台上字第 317 號判決；<a href="https://www.lexology.com/library/detail.aspx?g=12cc51a8-e6c3-40d9-b814-895c54ba1849">相關評析</a></li>
+    <li>其餘頁碼引用，皆出自該份 27 頁簡報本身</li>
+  </ul>
+  <p>本文為公開資料整理與數據比對，依 2026 年 10 月 19 日查得之資料撰寫，不構成法律意見或投資建議。個案狀況請洽專業律師。</p>
+</footer>
+
+</div>
